@@ -1,7 +1,5 @@
 library(shiny)
-library(datasets)
 source('functions.R', local=TRUE);
-
 
 
 # Define server logic required to summarize and view the selected

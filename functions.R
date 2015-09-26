@@ -9,7 +9,7 @@ getCharsVector  <- function(str){
   return (vec);
 }
 
-#just change space to ' ' for label display
+#just change space to <space> for label display on the webpage 
 adjustCharsVec <- function(charsVec){
   for (i in 1: length(charsVec)){
     if (charsVec[i] == ' '){
@@ -20,6 +20,8 @@ adjustCharsVec <- function(charsVec){
   return (charsVec);
 } 
 
+# the main function used to create the two tables
+# one about character frequencies and the other about their proportions 
 getCountsAndPropsTable <- function(string){
   charsVec = getCharsVector(string);
   last = 10 + 1;
