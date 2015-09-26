@@ -11,7 +11,7 @@ shinyUI(fluidPage(
   sidebarLayout(
     sidebarPanel(
       
-      helpText( "Descrition of how to use this app: The application is easy to use. Paste a long or short text in the text box above to calculate the frequencies of frequently occurring characters of the input text and their proportions. The first output table in the main panel displays frequently occurring characters and their frequencies, and the second output table in the main panel displays frequently occurring characters and their proportions. "),  
+      helpText( "Descrition of how to use this app: The application is easy to use. Paste a long or short text in the text box below to calculate the frequencies of frequently occurring characters of the input text and their proportions. The first output table in the main panel displays frequently occurring characters and their frequencies, and the second output table in the main panel displays frequently occurring characters and their proportions. "),  
       textInput("text", label = "Paste a text here: ", value = "aabccdccce", width = "100%")
     ),
     

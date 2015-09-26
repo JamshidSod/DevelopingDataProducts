@@ -15,8 +15,10 @@ shinyServer(function(input, output) {
   # Generate a figure for frequencies
   output$frequencyFigure <- renderPlot({
     if (nchar(input$text) > 0){
-      barplot(tables$countsTable, col = "cyan", ylim = c(0, max(tables$countsTable) * 1.2), 
-                             xlab = "Characters", ylab = "Frequencies", main = "Frequencies of Characters in Input Text");
+      x = barplot(tables$countsTable, col = "cyan", ylim = c(0, max(tables$countsTable) * 1.2), 
+              xlab = "Characters", ylab = "Frequencies", 
+              main = "Frequencies of Characters in Input Text", cex.names = 1.3);
+      text(x, tables$countsTable, labels=tables$countsTable, col="red", font = 2, cex = 1.3)
     }
   })
   
@@ -35,8 +37,10 @@ shinyServer(function(input, output) {
   # Generate a figure for proportions
   output$proportionFigure <- renderPlot({
     if (nchar(input$text) > 0){
-      barplot(tables$propTable, col = "green", ylim = c(0, max(tables$propTable) * 1.2), 
-              xlab = "Characters", ylab = "Proportions", main = "Proportions of Character Frequencies");
+      x = barplot(tables$propTable, col = "green", ylim = c(0, max(tables$propTable) * 1.2), 
+              xlab = "Characters", ylab = "Proportions", 
+              main = "Proportions of Character Frequencies", cex.names = 1.3);
+      text(x, tables$propTable, labels=round(tables$propTable, digits = 4), col="red", font = 2, cex = 1.3)
     }
   })
   
