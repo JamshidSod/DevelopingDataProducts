@@ -34,10 +34,10 @@ shinyServer(function(input, output) {
   output$summary_freq <- renderTable({
     if (nchar(input$text) > 0){
       sm = summary(tables$countsTable);
+      sm["Std."] = round(sd(tables$countsTable),digits = 4);
       sm["Total Frequency"] = as.character(sum(tables$countsTable));
       uniqueChars = length(tables$countsTable);
       sm["Unique Chars"] = uniqueChars;
-       
       dataFrame = data.frame(t(sm[1:length(sm)]), row.names = NULL);
       names(dataFrame) = names(sm);
       dataFrame
