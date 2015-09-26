@@ -1,5 +1,5 @@
 
-
+# get a vector individual characters
 getCharsVector  <- function(str){
   vec = NULL;  
   num = nchar(str);
@@ -24,26 +24,14 @@ adjustCharsVec <- function(charsVec){
 # one about character frequencies and the other about their proportions 
 getCountsAndPropsTable <- function(string){
   charsVec = getCharsVector(string);
-  last = 10 + 1;
+ # last = 10 + 1;
   
   countsTable = sort(table(charsVec), decreasing=T);
   propTable = countsTable / sum(countsTable);
+  
   charsVec = names(countsTable);
   charsVec = adjustCharsVec(charsVec = charsVec);
-  
-  if (length(charsVec) >= last){
-    charsVec = charsVec[1:last];
-    charsVec[last] = "others";
-    
-    size = length(countsTable);
-    
-    countsTable[last] = sum(countsTable[last:size])
-    countsTable = countsTable[1:last];
-    propTable[last] = sum(propTable[last:size]);
-    propTable = propTable[1:last];
-    
-    names(countsTable) = names(propTable) = charsVec;
-  }
+  names(countsTable) = names(propTable) = charsVec;
   
   tables = list();
   tables$countsTable = countsTable;

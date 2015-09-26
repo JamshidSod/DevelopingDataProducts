@@ -15,6 +15,14 @@ shinyServer(function(input, output) {
   # Generate a figure for frequencies
   output$frequencyFigure <- renderPlot({
     if (nchar(input$text) > 0){
+      last = 10 + 1;
+      uniqueChars = length(tables$countsTable)
+      if (uniqueChars >= last){
+        tables$countsTable[last] = sum(tables$countsTable[last:uniqueChars])
+        tables$countsTable = tables$countsTable[1:last];
+        names(tables$countsTable)[last] = "others";
+      }
+      
       x = barplot(tables$countsTable, col = "cyan", ylim = c(0, max(tables$countsTable) * 1.2), 
               xlab = "Characters", ylab = "Frequencies", 
               main = "Frequencies of Characters in Input Text", cex.names = 1.3);
@@ -27,6 +35,9 @@ shinyServer(function(input, output) {
     if (nchar(input$text) > 0){
       sm = summary(tables$countsTable);
       sm["Total Frequency"] = as.character(sum(tables$countsTable));
+      uniqueChars = length(tables$countsTable);
+      sm["Unique Chars"] = uniqueChars;
+       
       dataFrame = data.frame(t(sm[1:length(sm)]), row.names = NULL);
       names(dataFrame) = names(sm);
       dataFrame
@@ -37,6 +48,15 @@ shinyServer(function(input, output) {
   # Generate a figure for proportions
   output$proportionFigure <- renderPlot({
     if (nchar(input$text) > 0){
+      
+      last = 10 + 1;
+      uniqueChars = length(tables$countsTable)
+      if (uniqueChars >= last){
+        tables$propTable[last] = sum(tables$propTable[last:uniqueChars]);
+        tables$propTable = tables$propTable[1:last];
+        names(tables$propTable)[last] = "others";
+      }
+      
       x = barplot(tables$propTable, col = "green", ylim = c(0, max(tables$propTable) * 1.2), 
               xlab = "Characters", ylab = "Proportions", 
               main = "Proportions of Character Frequencies", cex.names = 1.3);
