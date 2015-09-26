@@ -1,6 +1,6 @@
 name: CharacterCalculator
 account: a-user-of-shiny
 server: shinyapps.io
-bundleId: 274344
+bundleId: 274351
 url: https://a-user-of-shiny.shinyapps.io/CharacterCalculator
-when: 1443269690.94848
+when: 1443270544.90233
